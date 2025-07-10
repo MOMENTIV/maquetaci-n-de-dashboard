@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-4">
+        <h2 class="text-xl font-bold mb-6">Dashboard</h2>
+        <nav class="space-y-2">
+        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100">Inicio</a>
+        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100">Usuarios</a>
+        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100">Reportes</a>
+        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-100">Ajustes</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+        <!-- Header -->
+        <header class="mb-6">
+        <h1 class="text-3xl font-semibold">Panel de control</h1>
+        </header>
+
+        <!-- Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-sm text-gray-500">Ventas</h3>
+            <p class="text-2xl font-bold">$12,400</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-sm text-gray-500">Usuarios</h3>
+            <p class="text-2xl font-bold">1,260</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-sm text-gray-500">Visitas</h3>
+            <p class="text-2xl font-bold">87K</p>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-sm text-gray-500">Tickets</h3>
+            <p class="text-2xl font-bold">340</p>
+        </div>
+        </section>
+
+        <!-- Charts -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-lg font-semibold mb-2">Gráfica de Ventas</h3>
+            <canvas id="salesChart"></canvas>
+        </div>
+        <div class="bg-white rounded-xl p-4 shadow">
+            <h3 class="text-lg font-semibold mb-2">Usuarios Activos</h3>
+            <canvas id="usersChart"></canvas>
+        </div>
+        </section>
+    </main>
+    </div>
+
+    <script>
+    const ctx1 = document.getElementById('salesChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'line',
+        data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Ventas',
+            data: [1200, 1900, 3000, 2500, 3200, 4000],
+            borderColor: 'rgb(75, 192, 192)',
+            fill: false
+        }]
+        }
+    });
+
+    const ctx2 = document.getElementById('usersChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+        labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+        datasets: [{
+            label: 'Usuarios',
+            data: [300, 500, 400, 600, 700],
+            backgroundColor: 'rgb(153, 102, 255)'
+        }]
+        }
+    });
+    </script>
+</body>
+</html>
